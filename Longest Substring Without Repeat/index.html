@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+//         This is an interview question
+// Longest Substring Without Repeating Characters
+// Level: Medium
+// Given a string s, find the length of the longest substring without repeating characters.
+// Example 1:
+// Input: s = "abcabcbb"
+// Output: 3
+// Explanation: The answer is "abc", with the length of 3.
+// Example 2:
+// Input: s = "bbbbb"
+// Output: 1
+// Explanation: The answer is "b", with the length of 1.
+// Example 3:
+// Input: s = "pwwkew"
+// Output: 3
+// Explanation: The answer is "wke", with the length of 3.
+// Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+    function longest(arr){
+        let res = '';
+        let max = 0;
+        for (let i = 0; i < arr.length; i++){
+            for (let j = arr.length ; j > i; j--) {
+                const tempSet = new Set(arr.slice(i, j));
+                const temp = arr.slice(i, j);
+                if (tempSet.size == temp.length && temp.length > max) {
+                    res = temp;
+                    max = temp.length;
+                }
+                else continue;
+            }
+        }
+        return `The answer is ${res}, with the length of ${max}`
+    }
+    console.log(longest("pwwkew"));
+    </script>
+</body>
+</html>
